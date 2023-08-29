@@ -26,7 +26,8 @@ for record in data:
 session.commit()
 
 
-def get_shops(meaning):
+def get_shops():
+    meaning = input("Введите id или имя издателя: ")
     query = (session.query(Book.title, Shop.name, Sale.price, Sale.date_sale)
              .join(Publisher).join(Stock).join(Sale).join(Shop))
     if meaning.isdigit():
@@ -38,7 +39,6 @@ def get_shops(meaning):
 
 
 if __name__ == '__main__':
-    meaning = input("Введите id или имя издателя: ")
-    get_shops(meaning)
+    get_shops()
 
 session.close()
